@@ -4,11 +4,11 @@ import java.util.Date;
 
 @SuppressWarnings("deprecation")
 public class XDate extends Date {
-    public XDate(int date, int month, int year) {
+    public XDate(int year, int month, int date) {
         super(year - 1900, month - 1, date);
     }
 
-    public XDate(int date, int month, int year, int hour, int min, int sec) {
+    public XDate(int year, int month, int date, int hour, int min, int sec) {
         super(year, month, date, hour, min, sec);
     }
 
@@ -26,7 +26,7 @@ public class XDate extends Date {
 
     public static XDate now() {
         Date d = new Date();
-        return new XDate(d.getDay(), d.getMonth(), d.getYear() , d.getHours(), d.getMinutes(),
+        return new XDate(d.getYear(), d.getMonth(), d.getDay(), d.getHours(), d.getMinutes(),
                 d.getSeconds());
     }
 }
