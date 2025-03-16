@@ -1,3 +1,4 @@
+package Q1;
 public class LockableDoor extends Door {
     private boolean isLock;
 
