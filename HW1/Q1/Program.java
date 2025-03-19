@@ -8,5 +8,7 @@ public class Program {
         l1.showIsLocked();
         l1.unLock();
         l1.showIsLocked();
+        l1.open();
+        System.out.println(l1.isOpen());
     }
 }

@@ -31,7 +31,7 @@ public class LockableDoor extends Door {
             System.out.println("the door is locked");
         }
         else{
-            System.out.println("the door is open");
+            System.out.println("the door is unlocked");
         }
     }
 }

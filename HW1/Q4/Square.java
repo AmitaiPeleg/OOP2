@@ -1,7 +1,7 @@
 package Q4;
 //  ריבוע יורש ממלבן
-public class Squer extends Rect {
-    public Squer(int n){
+public class Square extends Rect {
+    public Square(int n){
         super(n,n);
     }
 
