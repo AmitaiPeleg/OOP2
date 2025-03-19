@@ -3,6 +3,7 @@ public class LockableDoor extends Door {
     private boolean isLock;
 
     public LockableDoor() {
+        super(true);
         isLock = false;
     }
     public void open(){
