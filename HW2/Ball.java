@@ -14,4 +14,8 @@ public class Ball extends ThreeD {
     public double surfaceArea() {
         return 4 * Math.PI * rd * rd;
     }
+
+    public void show() {
+        System.out.println("ThreeDimensional, radius: " + rd);
+    }
 }

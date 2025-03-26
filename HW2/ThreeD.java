@@ -6,4 +6,9 @@ public abstract class ThreeD {
     public ThreeD(int r) {
         rd = r;
     }
+
+    public abstract double volume();
+
+    public abstract double surfaceArea();
+    
 }

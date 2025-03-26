@@ -8,6 +8,8 @@ public abstract class EllipseFamily extends TwoDimensional {
     public double area() {
         return length * width * Math.PI;
     }
+
     public abstract double circ();
 
+    
 }
