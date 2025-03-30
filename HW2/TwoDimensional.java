@@ -16,4 +16,19 @@ public abstract class TwoDimensional extends Shape {
     public String toString() {
         return "is TwoDimensional, length: " + length + " width: " + width;
     }
+
+    public int compare(Shape s) {
+        if (!(s instanceof TwoDimensional)) {
+            return -1;
+        }
+        TwoDimensional tS = (TwoDimensional) s;
+        if (this.area() > tS.area()) {
+            return 1;
+        }
+        if (this.area() < tS.area()) {
+            return -1;
+        } else {
+            return 0;
+        }
+    }
 }
