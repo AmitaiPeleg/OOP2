@@ -11,11 +11,12 @@ public class Ball extends ThreeD {
         return a * r * Math.PI;
     }
 
-    public double surfaceArea() {
+    public double area() {
         return 4 * Math.PI * rd * rd;
     }
 
     public String toString() {
         return "ThreeDimensional, radius: " + rd;
     }
+
 }

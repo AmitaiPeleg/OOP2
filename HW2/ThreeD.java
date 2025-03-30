@@ -1,6 +1,6 @@
 package HW2;
 
-public abstract class ThreeD {
+public abstract class ThreeD extends Shape {
     protected int rd;
 
     public ThreeD(int r) {
@@ -9,6 +9,10 @@ public abstract class ThreeD {
 
     public abstract double volume();
 
-    public abstract double surfaceArea();
-    
+    public abstract double area();
+
+    public int compare() {
+        return 0;
+    }
+
 }

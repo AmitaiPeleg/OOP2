@@ -9,10 +9,11 @@ public class Cube extends ThreeD {
         return Math.pow(rd, 3);
     }
 
-    public double surfaceArea() {
+    public double area() {
         return 6 * rd * rd;
     }
-    public String toString(){
-     return  "ThreeDimensional, length: "+ rd;
+
+    public String toString() {
+        return "ThreeDimensional, length: " + rd;
     }
 }

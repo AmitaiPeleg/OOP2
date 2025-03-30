@@ -11,5 +11,4 @@ public abstract class EllipseFamily extends TwoDimensional {
 
     public abstract double circ();
 
-    
 }
