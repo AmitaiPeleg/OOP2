@@ -12,7 +12,8 @@ public class Ellipse extends EllipseFamily {
         double y = 3 * (length + width) - x;
         return Math.PI * y;
     }
-    public void show(){
-        System.out.println("TwoDimensional , long: "+ length+"short: "+ width);
+
+    public String toString() {
+        return "TwoDimensional , long: " + length + "short: " + width;
     }
 }

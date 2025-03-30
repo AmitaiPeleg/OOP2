@@ -9,7 +9,7 @@ public class Circle extends EllipseFamily {
         return 2 * length * Math.PI;
     }
 
-    public void show() {
-        System.out.println("TwoDimensional , radius: " + length);
+    public String toString() {
+        return "TwoDimensional , radius: " + length;
     }
 }

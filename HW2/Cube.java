@@ -12,7 +12,7 @@ public class Cube extends ThreeD {
     public double surfaceArea() {
         return 6 * rd * rd;
     }
-    public void show(){
-        System.out.println("ThreeDimensional, length: "+ rd);
+    public String toString(){
+     return  "ThreeDimensional, length: "+ rd;
     }
 }

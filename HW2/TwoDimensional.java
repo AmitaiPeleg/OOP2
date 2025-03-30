@@ -13,7 +13,7 @@ public abstract class TwoDimensional extends Shape {
 
     public abstract double circ();
 
-    public void show() {
-        System.out.println("is TwoDimensional, length: " + length + " width: " + width);
+    public String toString() {
+        return "is TwoDimensional, length: " + length + " width: " + width;
     }
 }

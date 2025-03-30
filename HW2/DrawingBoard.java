@@ -27,8 +27,8 @@ public class DrawingBoard {
         
     }
     public void showAll(){
-        for(int i=0;i<s.length;i++){
-            
+        for(int i=0;i<counter;i++){
+          System.out.println(  s[i].toString());
         }
     }
 }
