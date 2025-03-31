@@ -76,4 +76,10 @@ public class DrawingBoard {
         }
         return best;
     }
+
+    public Class[] getTypes() {
+        Class[] c;
+        
+
+    }
 }
