@@ -16,4 +16,10 @@ public abstract class Shape {
         }
     }
 
+    public boolean equals(Shape other) {
+        if (!(this.getClass() == other.getClass())) {
+            return false;
+        }
+        return true;
+    }
 }

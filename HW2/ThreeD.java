@@ -14,5 +14,16 @@ public abstract class ThreeD extends Shape {
     public int compare() {
         return 0;
     }
-
+public boolean equals(Shape other){
+    if (super.equals(other)) {
+        ThreeD s = (ThreeD) other;
+        if (this.rd!=s.rd) {
+            return false;
+        }
+    }
+    else{
+        return false;
+    }
+    return true;
+}
 }

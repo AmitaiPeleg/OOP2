@@ -17,5 +17,13 @@ public abstract class TwoDimensional extends Shape {
         return "is TwoDimensional, length: " + length + " width: " + width;
     }
 
-    
+    public boolean equals(Shape other) {
+        if (super.equals(other)) {
+            TwoDimensional s = (TwoDimensional) other;
+            if (this.length != s.length || s.width != this.width) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
