@@ -78,8 +78,32 @@ public class DrawingBoard {
     }
 
     public Class[] getTypes() {
-        Class[] c;
-        
-
+        Class[] c = new Class[s.length];
+        for (int i = 0; i < s.length; i++) {
+            c[i] = s[i].getClass();
+        }
+        for (int k = 1; k < c.length; k++) {
+            for (int j = k - 1; j >= 0; j--) {
+                if (c[k] == c[j]) {
+                    c[k] = null;
+                }
+            }
+        }
+        int count = 0;
+        for (int z = 0; z < c.length; z++) {
+            if (c[z] != null) {
+                count++;
+            }
+        }
+        Class[] result = new Class[count];
+        int num = 0;
+        for (int f = 0; f < c.length; f++) {
+            if (c[f] != null) {
+                result[num] = c[f];
+                num++;
+            }
+        }
+        return result;
     }
+
 }
