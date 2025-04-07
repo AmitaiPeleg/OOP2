@@ -20,8 +20,13 @@ public class Rational implements Showable, Arithmetic {
         return mone + "/" + mechane;
     }
 
-    public boolean equals(Rational r) {
-        return this.mone / this.mechane == r.mone / r.mechane;
+    public boolean equals(Object o) {
+        if (o.getClass() != Rational.class) {
+            return false;
+        }
+        Rational other = new Rational((Rational) o);
+        return this.mone * other.mechane == other.mone * this.mechane;
+
     }
 
     public void show() {
@@ -34,7 +39,7 @@ public class Rational implements Showable, Arithmetic {
         }
         Rational o = new Rational((Rational) other);
         int newMone = this.mone * o.mechane + o.mone * this.mechane;
-        int newMechane = this.mechane * this.mone;
+        int newMechane = this.mechane * o.mechane;
         return new Rational(newMone, newMechane);
     }
 
@@ -64,5 +69,9 @@ public class Rational implements Showable, Arithmetic {
         }
         Rational o = new Rational((Rational) other);
         return new Rational(o.mechane * this.mone, this.mechane * o.mone);
+    }
+
+    public Rational clone() {
+        return new Rational(this.mone, this.mechane);
     }
 }
