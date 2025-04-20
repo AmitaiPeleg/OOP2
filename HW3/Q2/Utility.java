@@ -2,8 +2,13 @@ package HW3.Q2;
 
 class Utility {
     public static void showAll(Showable[] a) {
+        if (a.length == 0) {
+            return;
+        }
         for (Showable s : a) {
-            s.show();
+            if (s != null) {
+                s.show();
+            }
         }
     }
 
@@ -12,12 +17,17 @@ class Utility {
             if (o instanceof Showable) {
                 ((Showable) o).show();
             } else {
-                o.toString();
+                System.out.println(o.toString());
+
             }
         }
     }
 
     public static boolean search(Object[] a, Object o) {
+        if (a.length == 0 || o == null) {
+            return false;
+        }
+        
         for (Object other : a) {
             if (other instanceof Comparable) {
 
@@ -34,6 +44,9 @@ class Utility {
     }
 
     public static Object max(Object[] a) {
+        if (a.length == 0) {
+            return null;
+        }
         for (int i = 0; i < a.length - 1; i++) {
             if (a[i].getClass() != a[i + 1].getClass()) {
                 return null;
@@ -45,7 +58,7 @@ class Utility {
         Object max = a[0];
         for (int j = 1; j < a.length; j++) {
             if (((Comparable) a[j]).compareTo(max) == -1) {
-                a[j] = max;
+                max = a[j];
             }
         }
         return max;

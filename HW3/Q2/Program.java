@@ -26,9 +26,10 @@ public class Program {
         Utility.showAll(objectArray);
 
         // קריאה לשיטה search
+        System.out.println("=====");
         Object searchObject = new ShowableObject1("me");
         boolean found = Utility.search(objectArray, searchObject);
-        System.out.println("\nSearch result for " + searchObject + ": " + found);
+        System.out.println("\nSearch result for " + searchObject.toString() + ": " + found);
 
         // קריאה לשיטה max
         Object maxObject = Utility.max(objectArray);
