@@ -29,7 +29,7 @@ class Utility {
         }
         
         for (Object other : a) {
-            if (other instanceof Comparable) {
+            if (other instanceof Comparable&& o instanceof Comparable) {
 
                 if (((Comparable) other).compareTo(o) == 0) {
                     return true;
