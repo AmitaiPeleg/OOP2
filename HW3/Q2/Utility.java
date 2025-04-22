@@ -27,9 +27,9 @@ class Utility {
         if (a.length == 0 || o == null) {
             return false;
         }
-        
+
         for (Object other : a) {
-            if (other instanceof Comparable&& o instanceof Comparable) {
+            if (other instanceof Comparable && o.getClass() == other.getClass()) {
 
                 if (((Comparable) other).compareTo(o) == 0) {
                     return true;
@@ -57,7 +57,7 @@ class Utility {
         }
         Object max = a[0];
         for (int j = 1; j < a.length; j++) {
-            if (((Comparable) a[j]).compareTo(max) == -1) {
+            if (((Comparable) a[j]).compareTo(max) == 1) {
                 max = a[j];
             }
         }

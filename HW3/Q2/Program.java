@@ -14,7 +14,7 @@ public class Program {
                 new ShowableObject1("First"),
                 new ShowableObject1("Second"),
                 new ShowableObject1("Third"),
-                new String("Hello")
+                
         };
 
         // קריאה לשיטה showAll עם מערך של Showable[]
@@ -27,7 +27,7 @@ public class Program {
 
         // קריאה לשיטה search
         System.out.println("=====");
-        Object searchObject = new ShowableObject1("me");
+        Object searchObject = new ShowableObject1("First");
         boolean found = Utility.search(objectArray, searchObject);
         System.out.println("\nSearch result for " + searchObject.toString() + ": " + found);
 
