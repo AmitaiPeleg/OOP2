@@ -1,75 +1,140 @@
 package HW3.Q3;
 
-public class Set {
+import HW3.Q1.Arithmetic;
+
+public class Set implements Arithmetic {
     private Object[] objects;
     int count = 0;
 
     public Set(int size, Object... o) {
-        boolean a = true;
         objects = new Object[size];
-        for (int i = 0; i < o.length; i++) {
-            for (int j = 0; j < count; j++) {
-                if (o[i].equals(objects[j])) {
-                    a = false;
+        for (Object x : o) {
+            boolean need_to_add = true;
+            for (int index = 0; index < count; index++) {
+                Object y = objects[index];
+                if (x.equals(y)) {
+                    need_to_add = false;
                     break;
                 }
-                if (a) {
-                    objects[count] = o[i];
-                    count++;
-                    break;
-                }
+            }
+            if (need_to_add) {
+                // o not in the currect objects. insert it
+                System.out.println("adding " + x);
+                objects[count] = x;
+                count++;
             }
         }
     }
 
+    @Override
     public String toString() {
-        boolean a = true;
-        int counter = 0;
-        Object[] s;
+        Object[] uniqueTypes = new Object[count];
+        int uniqueCount = 0;
+
+        // מציאת סוגי אובייקטים ייחודיים
         for (int i = 0; i < count; i++) {
-            for (int j = i + 1; j < count; j++) {
-                if (objects[i].getClass() == objects[j].getClass()) {
-                    a = false;
+            boolean found = false;
+            for (int j = 0; j < uniqueCount; j++) {
+                if (objects[i].getClass() == uniqueTypes[j].getClass()) {
+                    found = true;
                     break;
                 }
             }
-            if (a) {
-                counter++;
-            }
-            a = true;
-        }
-        s = new Object[counter];
-        int c = 0;
-        for (int z = 0; z < count; z++) {
-            for (int k = z + 1; k < count; k++) {
-                if (objects[z].getClass() == objects[k].getClass()) {
-                    a = false;
-                    break;
-                }
-            }
-            if (a) {
-                s[c] = objects[z];
-                c++;
-            }
-            a = true;
-        }
-        int[] counts = new int[counter];
-        for (int x = 0; x < counter; x++) {
-            for (int f = 0; f < count; f++) {
-                if (s[x].getClass() == objects[f].getClass()) {
-                    counts[x]++;
-                }
+            if (!found) {
+                uniqueTypes[uniqueCount] = objects[i];
+                uniqueCount++;
             }
         }
-        String[] result = new String[counter];
-        for (int d = 0; d < counter - 1; d++) {
-            result[d] = s[d].getClass().getName() + "(" + counts[d] + "):";
-        }
-        result[counter - 1] = s[counter - 1].getClass().getName() + "(" + counts[counter - 1] + ")";
+
         String reString = "";
-        for (int w = 0; w < counter; w++) {
-            reString += result[w];
+
+        // יצירת המחרוזת עבור כל סוג אובייקט
+        for (int i = 0; i < uniqueCount; i++) {
+            int typeCount = 0;
+            for (int j = 0; j < count; j++) {
+                if (uniqueTypes[i].getClass() == objects[j].getClass()) {
+                    typeCount++;
+                }
+            }
+            reString += uniqueTypes[i].getClass().getName() + "(" + typeCount + ")";
+            if (i < uniqueCount - 1) {
+                reString += ":";
+            }
         }
+
         return reString;
+    }
+
+    public Set add(Object other) {
+        if (!(other instanceof Set)) {
+            return this;
+        }
+        Set s = (Set) other;
+        int size = count + s.count;
+        Object[] o = new Object[size];
+        int index = 0;
+        for (int i = 0; i < count; i++, index++) {
+            o[index] = objects[i];
+        }
+        for (int i = 0; i < s.count; i++, index++) {
+            o[index] = s.objects[i];
+        }
+        return new Set(size, o);
+    }
+
+    public void show() {
+        // prints all items in the set
+        for (int i = 0; i < count; i++) {
+            System.out.print(" " + objects[i]);
+        }
+        System.out.println("");
+    }
+
+    public boolean helpSub(Object other) {
+        for (int i = 0; i < count; i++) {
+            if (other.equals(objects[i])) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public Set sub(Object other) {
+        if (!(other instanceof Set)) {
+            return this;
+        }
+        Set s = (Set) other;
+        Object[] o = new Object[count];
+        int counter = 0;
+        for (int i = 0; i < count; i++) {
+            if (s.helpSub(objects[i])) {
+                o[counter] = objects[i];
+            }
+        }
+        if (o[0] == null) {
+            return null;
+        }
+        return new Set(counter, o);
+    }
+
+    @Override
+    public Arithmetic mul(Object other) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'mul'");
+    }
+
+    @Override
+    public Arithmetic div(Object other) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'div'");
+    }
+
+    public static void main(String[] args) {
+        Set s = new Set(10, "hi", 5, 3.1, "hello", 5);
+        System.out.println("next");
+        Set se = new Set(10, "hi", 5, 3.14, "hello", 5);
+        System.out.println("after sum");
+        System.out.println(s.sub(se));
     }
 }
