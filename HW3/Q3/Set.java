@@ -9,7 +9,11 @@ public class Set implements Arithmetic {
     public Set(int size, Object... o) {
         objects = new Object[size];
         for (Object x : o) {
+            // System.out.println(x.getClass().getName());
             boolean need_to_add = true;
+            if (x == null) {
+                continue;
+            }
             for (int index = 0; index < count; index++) {
                 Object y = objects[index];
                 if (x.equals(y)) {
@@ -110,6 +114,7 @@ public class Set implements Arithmetic {
         for (int i = 0; i < count; i++) {
             if (s.helpSub(objects[i])) {
                 o[counter] = objects[i];
+                counter++;
             }
         }
         if (o[0] == null) {
@@ -120,20 +125,37 @@ public class Set implements Arithmetic {
 
     @Override
     public Arithmetic mul(Object other) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'mul'");
+        if (!(other instanceof Set)) {
+            return null;
+        }
+        Set s = (Set) other;
+        Object[] o = new Object[count + s.count];
+        int counter = 0;
+
+        for (int i = 0; i < count; i++) {
+            if (!(s.helpSub(objects[i]))) {
+                o[counter] = objects[i];
+                counter++;
+            }
+        }
+
+        if (o[0] == null) {
+            return null;
+        }
+        return new Set(counter, o);
     }
 
     @Override
     public Arithmetic div(Object other) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'div'");
+        return null;
     }
 
     public static void main(String[] args) {
-        Set s = new Set(10, "hi", 5, 3.1, "hello", 5);
+        Set s = new Set(10, 1, 2, 3, 4, 5);
+        s.show();
         System.out.println("next");
-        Set se = new Set(10, "hi", 5, 3.14, "hello", 5);
+        Set se = new Set(10, 1, 3, 5, 6);
+        se.show();
         System.out.println("after sum");
         System.out.println(s.sub(se));
     }
