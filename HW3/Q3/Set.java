@@ -150,6 +150,17 @@ public class Set implements Arithmetic {
         return null;
     }
 
+    public Object[] getArrayClass(Class c) {
+        Object[] o = new Object[count];
+        int counter = 0;
+        for (int i = 0; i < count; i++) {
+            if (objects[i].getClass() == c) {
+                o[counter] = objects[i];
+            }
+        }
+        return o;
+    }
+
     public static void main(String[] args) {
         Set s = new Set(10, 1, 2, 3, 4, 5);
         s.show();
