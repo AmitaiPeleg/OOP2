@@ -151,23 +151,66 @@ public class Set implements Arithmetic {
     }
 
     public Object[] getArrayClass(Class c) {
-        Object[] o = new Object[count];
+        int size = 0;
+        for (int j = 0; j < count; j++) {
+            if (objects[j].getClass() == c) {
+                size++;
+            }
+        }
+        Object[] o = new Object[size];
         int counter = 0;
         for (int i = 0; i < count; i++) {
             if (objects[i].getClass() == c) {
                 o[counter] = objects[i];
+                counter++;
             }
         }
         return o;
     }
 
+    public Class[] getAllClass() {
+        Class[] start = new Class[count];
+        Class[] result;
+        boolean a = true;
+        int counter = 0;
+        int size = 0;
+        for (int i = 0; i < count; i++) {
+            start[i] = objects[i].getClass();
+        }
+        for (int j = 0; j < start.length; j++) {
+            a = true;
+            for (int z = j + 1; z < start.length; z++) {
+                if (start[j] == start[z]) {
+                    a = false;
+                    break;
+                }
+            }
+            if (a) {
+                size++;
+            }
+        }
+        result = new Class[size];
+        for (int r = 0; r < start.length; r++) {
+            a = true;
+            for (int c = r + 1; c < start.length; c++) {
+                if (start[r] == start[c]) {
+                    a = false;
+                    break;
+                }
+            }
+            if (a) {
+                result[counter] = start[r];
+                counter++;
+            }
+        }
+        return result;
+    }
+
     public static void main(String[] args) {
-        Set s = new Set(10, 1, 2, 3, 4, 5);
-        s.show();
-        System.out.println("next");
-        Set se = new Set(10, 1, 3, 5, 6);
-        se.show();
-        System.out.println("after sum");
-        System.out.println(s.sub(se));
+        Set s = new Set(10, 1, 2, 3.2, 4, 5);
+        Class[] o = s.getAllClass();
+        for (int i = 0; i < o.length; i++) {
+            System.out.print(" " + o[i]);
+        }
     }
 }
