@@ -10,7 +10,7 @@ public class Set implements Arithmetic, ScanOp {
     public Set(int size, Object... o) {
         objects = new Object[size];
         for (Object x : o) {
-            // System.out.println(x.getClass().getName());
+            
             boolean need_to_add = true;
             if (x == null) {
                 continue;
@@ -23,8 +23,7 @@ public class Set implements Arithmetic, ScanOp {
                 }
             }
             if (need_to_add) {
-                // o not in the currect objects. insert it
-                System.out.println("adding " + x);
+                
                 objects[count] = x;
                 count++;
             }
