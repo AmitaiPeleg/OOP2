@@ -2,9 +2,10 @@ package HW3.Q3;
 
 import HW3.Q1.Arithmetic;
 
-public class Set implements Arithmetic {
+public class Set implements Arithmetic, ScanOp {
     private Object[] objects;
-    int count = 0;
+    private int count = 0;
+    private int currentIndex = 0;
 
     public Set(int size, Object... o) {
         objects = new Object[size];
@@ -206,11 +207,33 @@ public class Set implements Arithmetic {
         return result;
     }
 
-    public static void main(String[] args) {
-        Set s = new Set(10, 1, 2, 3.2, 4, 5);
-        Class[] o = s.getAllClass();
-        for (int i = 0; i < o.length; i++) {
-            System.out.print(" " + o[i]);
+    @Override
+    public void reset() {
+        currentIndex = 0;
+    }
+
+    @Override
+    public boolean forward() {
+        if (currentIndex < count-1) {
+            currentIndex++;
+            return true;
+        } else {
+            return false;
         }
+    }
+
+    @Override
+    public boolean backward() {
+        if (currentIndex > 0) {
+            currentIndex--;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public Object getCurrent() {
+        return objects[currentIndex];
     }
 }
