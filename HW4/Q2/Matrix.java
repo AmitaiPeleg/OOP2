@@ -41,7 +41,7 @@ public class Matrix implements Arithmetic, InputOuput {
 
     @Override
     public Matrix sub(Object other) {
-        if (!(other instanceof Matrix)) {
+        if (other == null || !(other instanceof Matrix)) {
             throw new MatrixException("the second object isn't Matrix");
         }
         Matrix o = (Matrix) other;
@@ -108,4 +108,21 @@ public class Matrix implements Arithmetic, InputOuput {
         }
     }
 
+    public boolean equals(Object other) {
+        if (other == null || !(other instanceof Matrix)) {
+            throw new MatrixException("the second object isn't Matrix");
+        }
+        Matrix o = (Matrix) other;
+        if (this.length != o.length || this.width != o.width) {
+            throw new NotTheSameSizeException();
+        }
+        for (int i = 0; i < length; i++) {
+            for (int j = 0; j < width; j++) {
+                if (this.data[i][j] != o.data[i][j]) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 }
