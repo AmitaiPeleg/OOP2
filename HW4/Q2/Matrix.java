@@ -125,4 +125,30 @@ public class Matrix implements Arithmetic, InputOuput {
         }
         return true;
     }
+
+    public Matrix clone(Object other) {
+        if (other == null || !(other instanceof Matrix)) {
+            throw new MatrixException("the second object isn't Matrix");
+        }
+        Matrix o = (Matrix) other;
+        o.length = length;
+        o.width = width;
+        o.data = new int[length][width];
+        for (int i = 0; i < length; i++) {
+            for (int j = 0; j < width; j++) {
+                o.data[i][j] = this.data[i][j];
+            }
+        }
+        return o;
+    }
+
+    public int valueAt(int i, int j) {
+        if (i >= length || i < 0) {
+            throw new MatrixException("i " + i + "is out of  bounds");
+        }
+        if (j >= width || j < 0) {
+            throw new MatrixException("j " + j + "is out of  bounds");
+        }
+        return data[i][j];
+    }
 }
