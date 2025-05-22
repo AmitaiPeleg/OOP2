@@ -97,6 +97,9 @@ public class List {
     }
 
     public ListNode removeAt(int k) {
+        if (k < 0) {
+            throw new ListIndexOutOfBound();
+        }
         if (isEmpty()) {
             throw new EmptyListException();
         }
@@ -124,7 +127,13 @@ public class List {
                 }
             }
         }
-        throw new IndexOutOfBoundsException("Invalid index: " + k);
+        throw new ListIndexOutOfBound();
+    }
 
+    public void show() {
+        if (firstNode == null)
+            return;
+        else
+            firstNode.show();
     }
 }

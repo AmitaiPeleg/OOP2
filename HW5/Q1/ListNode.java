@@ -25,4 +25,8 @@ public class ListNode {
     public void setNext(ListNode ln) {
         nextNode = ln;
     }
+
+    public void show() {
+        System.out.println(data.toString());
+    }
 }
