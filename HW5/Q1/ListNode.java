@@ -27,6 +27,9 @@ public class ListNode {
     }
 
     public void show() {
-        System.out.println(data.toString());
+        System.out.print(data + " ");
+        if (nextNode != null) {
+            nextNode.show();
+        }
     }
 }

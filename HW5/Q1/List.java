@@ -136,4 +136,51 @@ public class List {
         else
             firstNode.show();
     }
+
+    public void addAt(Object o, int k) {
+        if (k < 0) {
+            throw new ListIndexOutOfBound();
+        }
+        ListNode l = (ListNode) o;
+        ListNode current = firstNode;
+        if (k == 0) {
+            this.insertAtFront(l);
+            return;
+        }
+        int i = 0;
+        while (current != null) {
+            if (i == k - 1) {
+                ListNode next = current.getNext();
+                current.setNext(l);
+                l.setNext(next);
+                return;
+            } else {
+                current = current.getNext();
+                i++;
+            }
+        }
+
+        throw new ListIndexOutOfBound();
+
+    }
+
+    public ListNode[] toArray() {
+        if (isEmpty()) {
+            throw new EmptyListException();
+        }
+        ListNode current = firstNode;
+        ListNode[] result;
+        int size = 0;
+        while (current != null) {
+            size++;
+            current = current.getNext();
+        }
+        result = new ListNode[size];
+        current = firstNode;
+        for (int i = 0; i < size; i++) {
+            result[i] = current;
+            current = current.getNext();
+        }
+        return result;
+    }
 }
