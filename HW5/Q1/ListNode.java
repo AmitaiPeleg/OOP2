@@ -32,4 +32,11 @@ public class ListNode {
             nextNode.show();
         }
     }
+
+    public void showRev() {
+        if (nextNode != null) {
+            nextNode.showRev();
+        }
+        System.out.print(data + " ");
+    }
 }
