@@ -1,27 +1,25 @@
 package Exercise.Six.ExerciseFromChat;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Chat {
-    public static void printWinner(String[] people) {
-        HashMap<String, Integer> m = new HashMap<>();
-        for (String s : people) {
-            if (m.containsKey(s)) {
-                m.put(s, m.get(s) + 1);
-            } else {
-                m.put(s, 1);
+    List<String> names = new ArrayList<>();
+
+    public void Chats() {
+        names.add("Aliam");
+        names.add("Noa");
+        names.add("Eden");
+        Iterator<String> it = names.iterator();
+        while (it.hasNext()) {
+            String s = it.next();
+            if (s.charAt(0) == 'A') {
+                it.remove();
             }
         }
-        int maxVotes = -1;
-        String winner = "";
-        for (Map.Entry<String, Integer> t : m.entrySet()) {
-            if (t.getValue() > maxVotes) {
-                winner = t.getKey();
-                maxVotes = t.getValue();
-            }
-        }
-        System.out.println(winner + "(" + maxVotes + ")");
     }
 }
