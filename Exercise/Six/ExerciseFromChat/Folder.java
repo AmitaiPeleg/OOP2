@@ -1,5 +1,6 @@
+import java.util.Iterator;
 
-public class Folder {
+public class Folder implements Iterable<String> {
     private File[] files;
     private int counter;
 
@@ -32,7 +33,7 @@ public class Folder {
         }
     }
 
-    public class FolderIterator {
+    public class FolderIterator implements Iterator<String> {
         int fileIndex;
         File.FileIterator fileIterator;
 
@@ -45,7 +46,7 @@ public class Folder {
             return (fileIterator.hasNext());
         }
 
-        String next() {
+        public String next() {
             if (fileHaveMoreWords()) {
                 return fileIterator.next();
             } else {
@@ -60,6 +61,18 @@ public class Folder {
             throw new RuntimeException("end of iterator");
         }
 
+        @Override
+        public boolean hasNext() {
+            // TODO Auto-generated method stub
+            return fileHaveMoreWords();
+        }
+
+    }
+
+    @Override
+    public Iterator<String> iterator() {
+        // TODO Auto-generated method stub
+        return new FolderIterator();
     }
 
 }

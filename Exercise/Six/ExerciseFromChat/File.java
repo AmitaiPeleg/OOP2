@@ -1,5 +1,6 @@
+import java.util.Iterator;
 
-public class File implements Cloneable {
+public class File implements Cloneable, Iterable<String> {
     private String name;
     private String content;
 
@@ -16,7 +17,7 @@ public class File implements Cloneable {
         return content.split(" ");
     }
 
-    public class FileIterator {
+    public class FileIterator implements Iterator {
         private String[] words;
         private Integer counter;
 
@@ -38,5 +39,11 @@ public class File implements Cloneable {
             return out;
         }
 
+    }
+
+    @Override
+    public Iterator<String> iterator() {
+        // TODO Auto-generated method stub
+        return new FileIterator(this);
     }
 }
