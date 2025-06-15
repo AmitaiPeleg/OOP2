@@ -26,6 +26,6 @@ public class Card implements Cloneable {
             return false;
         }
         Card c = (Card) o;
-        return value == c.value && suit == c.suit;
+        return value == c.value;
     }
 }
