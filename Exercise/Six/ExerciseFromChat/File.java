@@ -1,4 +1,3 @@
-package Exercise.Six.ExerciseFromChat;
 
 public class File implements Cloneable {
     private String name;
@@ -15,5 +14,29 @@ public class File implements Cloneable {
 
     public String[] toArray() {
         return content.split(" ");
+    }
+
+    public class FileIterator {
+        private String[] words;
+        private Integer counter;
+
+        public FileIterator(File f) {
+            this.words = f.toArray();
+            this.counter = 0;
+        }
+
+        public boolean hasNext() {
+            return counter < words.length;
+        }
+
+        public String next() {
+            if (!hasNext()) {
+                throw new RuntimeException("no more words");
+            }
+            String out = words[counter];
+            counter++;
+            return out;
+        }
+
     }
 }
